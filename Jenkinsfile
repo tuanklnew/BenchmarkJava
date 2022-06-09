@@ -7,7 +7,7 @@ pipeline {
         stage('pre-build') {
             steps {
                 sh 'rm trufflehog || true'
-                sh 'docker run gesellix/trufflehog --json https://github.com/tuanklnew/BenchmarkJava.git > trufflehog'
+                sh 'docker run gesellix/trufflehog --json https://github.com/tuanklnew/BenchmarkJava.git |& tee trufflehog'
                 sh 'cat trufflehog'
             }
         }
